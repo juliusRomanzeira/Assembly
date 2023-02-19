@@ -1,4 +1,4 @@
-MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  11:44:34         PAGE  1
+MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  12:54:18         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -46,17 +46,39 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 0007   3000           00028         movlw   00000000b       ; Todos são saida
 0008   0088           00029         movwf   PORTD
                       00030 
-                      00031 
-                      00032         
-0009                  00033 loop:           ; Label de loop, onde o programa irá funcionar
-                      00034 
-                      00035 
-0009   1408           00036         bsf             PORTD,0         ; Setando a porta 1 do PORTD
-                      00037         
-000A   2809           00038         goto loop               ; Vai mandar o programa para o label loop
-                      00039         
-                      00040         end                             ; Finaliza o programa
-MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  11:44:34         PAGE  2
+                      00031         
+0009                  00032 PISCA_LEDS:             ; Label de loop, onde o programa irá funcionar
+                      00033 
+                      00034         
+                      00035         
+0009   1408           00036         bsf             PORTD,0
+000A   1008           00037         bcf             PORTD,0
+000B   1488           00038         bsf             PORTD,1
+000C   1088           00039         bcf             PORTD,1
+000D   1508           00040         bsf             PORTD,2
+000E   1108           00041         bcf             PORTD,2
+MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  12:54:18         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000F   1588           00042         bsf             PORTD,3
+0010   1188           00043         bcf             PORTD,3
+0011   1608           00044         bsf             PORTD,4
+0012   1208           00045         bcf             PORTD,4
+0013   1688           00046         bsf             PORTD,5
+0014   1288           00047         bcf             PORTD,5
+0015   1708           00048         bsf             PORTD,6
+0016   1308           00049         bcf             PORTD,6
+0017   1788           00050         bsf             PORTD,7
+0018   1388           00051         bcf             PORTD,7
+                      00052         
+                      00053         
+0019   2809           00054         goto PISCA_LEDS         ; Vai mandar o programa para o label PISCA_LEDS
+                      00055         
+                      00056         end                             ; Finaliza o programa
+MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  12:54:18         PAGE  3
 
 
 SYMBOL TABLE
@@ -115,7 +137,7 @@ CHS1                              00000004
 CHS2                              00000005
 CIS                               00000003
 CKE                               00000006
-MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  11:44:34         PAGE  3
+MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  12:54:18         PAGE  4
 
 
 SYMBOL TABLE
@@ -174,7 +196,7 @@ INTF                              00000001
 IRP                               00000007
 NOT_A                             00000005
 NOT_ADDRESS                       00000005
-MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  11:44:34         PAGE  4
+MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  12:54:18         PAGE  5
 
 
 SYMBOL TABLE
@@ -209,6 +231,7 @@ PIE1                              0000008C
 PIE2                              0000008D
 PIR1                              0000000C
 PIR2                              0000000D
+PISCA_LEDS                        00000009
 PORTA                             00000005
 PORTB                             00000006
 PORTC                             00000007
@@ -232,13 +255,13 @@ RA5                               00000005
 RB0                               00000000
 RB1                               00000001
 RB2                               00000002
-RB3                               00000003
-MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  11:44:34         PAGE  5
+MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  12:54:18         PAGE  6
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+RB3                               00000003
 RB4                               00000004
 RB5                               00000005
 RB6                               00000006
@@ -291,13 +314,13 @@ SSPADD                            00000093
 SSPBUF                            00000013
 SSPCON                            00000014
 SSPCON2                           00000091
-SSPEN                             00000005
-MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  11:44:34         PAGE  6
+MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  12:54:18         PAGE  7
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+SSPEN                             00000005
 SSPIE                             00000003
 SSPIF                             00000003
 SSPM0                             00000000
@@ -350,13 +373,13 @@ TRISB                             00000086
 TRISB0                            00000000
 TRISB1                            00000001
 TRISB2                            00000002
-TRISB3                            00000003
-MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  11:44:34         PAGE  7
+MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  12:54:18         PAGE  8
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TRISB3                            00000003
 TRISB4                            00000004
 TRISB5                            00000005
 TRISB6                            00000006
@@ -409,13 +432,13 @@ _CPD_OFF                          00003FFF
 _CPD_ON                           00003EFF
 _CP_ALL                           00001FFF
 _CP_OFF                           00003FFF
-_CP_ON                            00001FFF
-MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  11:44:34         PAGE  8
+MPASM  5.51                  AULAS_WRKITS.ASM   2-19-2023  12:54:18         PAGE  9
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_CP_ON                            00001FFF
 _DEBUG_OFF                        00003FFF
 _DEBUG_ON                         000037FF
 _DEVID1                           00002006
@@ -445,17 +468,16 @@ _WRT_OFF                          00003FFF
 _XT_OSC                           00003FFD
 __16F877A                         00000001
 inicio                            00000001
-loop                              00000009
 
 
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
-0000 : XXXXXXXXXXX----- ---------------- ---------------- ----------------
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXX------ ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    11
-Program Memory Words Free:  8181
+Program Memory Words Used:    26
+Program Memory Words Free:  8166
 
 
 Errors   :     0
